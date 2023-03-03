@@ -1,5 +1,4 @@
 #include "Board.hpp"
-#include <iostream>
 using namespace ce;
 
 Board::Board(){

@@ -1,10 +1,5 @@
-#include <iostream>
-#include <cmath>
 #include <SFML/Graphics.hpp>
 #include "Board.hpp"
-#if DEBUG
-#include <stdexcept>
-#endif
 #define TS 100
 #define PS 280
 sf::Sprite& pieceToSprite(ce::Piece piece, sf::Sprite sprites[]){
@@ -96,13 +91,7 @@ int main(){
     sf::Sprite pieceSprites[12];
     for(int i = 0;i < 2;i++){
         for(int j = 0;j < 6;j++){
-            #if DEBUG
-            if(!pieceTextures[i*6 + j].loadFromFile("res/sprites.png", sf::IntRect(j*(PS+50), i*(PS+50), PS, PS))){
-                throw std::runtime_error("Couldn't load file sprites.png");
-            }
-            #else
             pieceTextures[i*6 + j].loadFromFile("res/sprites.png", sf::IntRect(j*(PS+50), i*(PS+50), PS, PS));
-            #endif
             pieceSprites[i*6+j].setTexture(pieceTextures[i*6+j]);
             pieceSprites[i*6+j].setScale(TS*1./PS, TS*1./PS);
         }
