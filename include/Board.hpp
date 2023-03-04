@@ -3,6 +3,7 @@
 
 #include <utility>
 #include <stack>
+#include <string>
 #include <vector>
 
 namespace ce {
@@ -34,15 +35,16 @@ struct UndoMove{
     Move move;
     Piece capturedPiece;
     int enPassantPawn;
-    bool leftRook, rightRook;
+    char rookMove = 0;
 };
 // En Passant pawn refers to the position of the pawn that moved 2 squares in the last move, or 64 if no such pawn did
 class Board {
 public:
     Board();
+    Board(const std::string& fen);
     void makeMove(Move move);
     void undoLastMove();
-    bool inCheck(uchar pos) const;
+    bool inCheck(uchar pos, int s) const;
     void getMoves(uchar pos, std::vector<Move>& legalMoves);
     Piece getPiece(uchar rank, uchar file) const;
     bool getTurn() const;

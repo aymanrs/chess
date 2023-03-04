@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Board.hpp"
 #define TS 100
 #define PS 280
